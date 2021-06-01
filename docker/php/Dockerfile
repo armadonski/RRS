@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine
+FROM php:fpm-alpine
 WORKDIR /var/www
 COPY composer-installer.sh /usr/bin/composer-installer
 RUN chmod +x /usr/bin/composer-installer
