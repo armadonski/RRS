@@ -1,8 +1,8 @@
-FROM php:fpm-alpine
+FROM php:fpm
 WORKDIR /var/www
-COPY composer-installer.sh /usr/bin/composer-installer
-RUN chmod +x /usr/bin/composer-installer
+RUN apt-get update &&\
+    apt-get upgrade -y &&\
+    apt-get install -y bash git
 RUN docker-php-ext-install pdo_mysql
-CMD ["composer-installer"]
 CMD ["php-fpm"]
 EXPOSE 9000

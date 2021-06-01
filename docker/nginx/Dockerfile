@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx
 WORKDIR /var/www
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 COPY ./conf/conf/sites-enabled/default.conf /etc/nginx/sites-enabled/default.conf
