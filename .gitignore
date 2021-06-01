@@ -1,4 +1,4 @@
 .idea
 docker/.env
 docker/nginx/logs/*
-src/logs/
+src/logs/*
