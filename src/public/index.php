@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-<?php echo "dsadsa" ?>
+<?php echo "Hello world!" ?>
 </body>
 </html>
