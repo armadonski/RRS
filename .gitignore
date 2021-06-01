@@ -1,1 +1,4 @@
 .idea
+docker/.env
+docker/nginx/logs/*
+src/logs/
