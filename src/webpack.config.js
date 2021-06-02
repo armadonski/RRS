@@ -7,6 +7,16 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
+    .configureImageRule({
+        // tell Webpack it should consider inlining
+        type: 'asset',
+        //maxSize: 4 * 1024, // 4 kb - the default is 8kb
+    })
+
+    .configureFontRule({
+        type: 'asset',
+        //maxSize: 4 * 1024
+    })
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
@@ -21,6 +31,14 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('index', './assets/index.js')
+    .addStyleEntry('indexStyle', './assets/index.css')
+    .addStyleEntry('appStyle', './assets/App.css')
+
+    .configureCssLoader(options => {
+            options.modules =
+                {localIdentName: '[name]__[local]__[hash:base64:5]'}
+        }
+    )
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     // .enableStimulusBridge('./assets/controllers.json')
@@ -45,8 +63,11 @@ Encore
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
-    .configureBabel((config) => {
-        config.plugins.push('@babel/plugin-proposal-class-properties');
+    .configureBabel(function (babelConfig) {
+        babelConfig.plugins = [
+            "@babel/plugin-proposal-object-rest-spread", "@babel/plugin-proposal-class-properties",
+            "@babel/plugin-transform-runtime"
+        ]
     })
 
     // enables @babel/preset-env polyfills
@@ -54,6 +75,8 @@ Encore
         config.useBuiltIns = 'usage';
         config.corejs = 3;
     })
+
+    .addLoader({})
 
     // enables Sass/SCSS support
     //.enableSassLoader()
