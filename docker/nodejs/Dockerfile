@@ -3,6 +3,6 @@ WORKDIR /app
 RUN apt-get update &&\
     apt-get upgrade -y &&\
     apt-get install -y bash git
-CMD ["npm", "install"]
+RUN "npm install"
 CMD ["./node_modules/.bin/encore","dev", "--watch"]
 EXPOSE 3000
