@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-    /** @Route("/", name="index", methods={"GET"}) */
+    /** @Route("/{_locale}", name="index", methods={"GET"}) */
     public function indexAction(): Response
     {
         return $this->render('base.html.twig');
