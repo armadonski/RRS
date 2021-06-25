@@ -4,7 +4,8 @@ RUN apt-get update &&\
     apt-get upgrade -y &&\
     apt-get install -y bash git
 RUN docker-php-ext-install pdo_mysql
-RUN "./composer.phar install"
+
 CMD ["php-fpm"]
+CMD ["./composer.phar", "install"]
 
 EXPOSE 9000
