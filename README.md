@@ -1,1 +1,1 @@
-# RRS
+# This repository contains a docker environment with symfony and react 
