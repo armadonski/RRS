@@ -31,8 +31,8 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('index', './assets/index.js')
-    .addStyleEntry('indexStyle', './assets/index.css')
-    .addStyleEntry('appStyle', './assets/App.css')
+    .addStyleEntry('index_style', './assets/index.css')
+    .addStyleEntry('nav', './assets/Components/UI/Nav/Nav.css')
 
     .configureCssLoader(options => {
             options.modules =
