@@ -33,6 +33,7 @@ Encore
     .addEntry('index', './assets/index.js')
     .addStyleEntry('index_style', './assets/index.css')
     .addStyleEntry('nav', './assets/Components/UI/Nav/Nav.css')
+    .addStyleEntry('content', './assets/Components/UI/Content/Content.css')
 
     .configureCssLoader(options => {
             options.modules =
