@@ -4,11 +4,11 @@ import Container from "./Components/hoc/Container";
 import TopHeader from "./Components/UI/Nav/TopHeader/TopHeader";
 import Header from "./Components/UI/Nav/Header/Header";
 
+const App = (props) => {
 
-const App = () => {
     return (
         <Container>
-            <TopHeader/>
+            <TopHeader language={props.locale}/>
             <Header/>
             <Content>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum

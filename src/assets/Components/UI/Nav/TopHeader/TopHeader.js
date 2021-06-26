@@ -3,10 +3,23 @@ import Nav from "../Nav";
 import {Facebook, Instagram, Twitter, Language} from '@material-ui/icons'
 import classes from './TopHeader.css';
 import LanguageDrawer from "../Drawer/LanguageDrawer/LanguageDrawer";
+import en from "../Drawer/LanguageDrawer/LanguageFlags/en.svg";
+import ro from "../Drawer/LanguageDrawer/LanguageFlags/ro.svg";
 
 const TopHeader = (props) => {
-    const [drawerStatus, setDrawerStatus] = useState(false);
+    const languageList = {
+        en: {
+            name: 'English',
+            flag: en
+        },
+        ro: {
+            name: 'Romanian',
+            flag: ro
+        }
+    };
 
+
+    const [drawerStatus, setDrawerStatus] = useState(false);
     const toggleDrawer = () => {
         setDrawerStatus(!drawerStatus);
     };
@@ -16,7 +29,7 @@ const TopHeader = (props) => {
             <div className={classes.language} onClick={toggleDrawer}>
                 <Language/>
                 <span className={classes.language_text}>
-                    English
+                    {languageList[props.language].name}
                 </span>
             </div>
             <div>
@@ -24,7 +37,7 @@ const TopHeader = (props) => {
                 <a href=""><Instagram style={{color: '#97694F'}}/></a>
                 <a href=""><Twitter style={{color: '#0996FB'}}/></a>
             </div>
-            <LanguageDrawer open={drawerStatus} toggleDrawer={toggleDrawer}/>
+            <LanguageDrawer languageList={languageList} open={drawerStatus} toggleDrawer={toggleDrawer}/>
         </Nav>
     );
 }

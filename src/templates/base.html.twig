@@ -3,8 +3,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-
+    <title>
+        {% block title %}Welcome!{% endblock %}
+    </title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('index_style') }}
         {{ encore_entry_link_tags('nav') }}
@@ -16,6 +17,11 @@
         {{ encore_entry_link_tags('language') }}
     {% endblock %}
 
+    {% block topScripts %}
+        <script>
+            const locale = '{{ _locale }}';
+        </script>
+    {% endblock %}
     {% block javascripts %}
         {{ encore_entry_script_tags('index') }}
     {% endblock %}
