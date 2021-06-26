@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Nav from "../Nav";
-import {Facebook, Instagram, Twitter, Language} from '@material-ui/icons'
+import {Facebook, Instagram, Twitter} from '@material-ui/icons'
 import classes from './TopHeader.css';
 import LanguageDrawer from "../Drawer/LanguageDrawer/LanguageDrawer";
 import en from "../Drawer/LanguageDrawer/LanguageFlags/en.svg";
@@ -27,7 +27,8 @@ const TopHeader = (props) => {
     return (
         <Nav>
             <div className={classes.language} onClick={toggleDrawer}>
-                <Language/>
+                <img style={{width: '40px'}} src={languageList[props.language].flag}
+                     alt={props.language}/>
                 <span className={classes.language_text}>
                     {languageList[props.language].name}
                 </span>
