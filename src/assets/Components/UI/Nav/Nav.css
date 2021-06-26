@@ -1,8 +1,17 @@
 .header {
-    display: flex;
     position: relative;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     height: 70px;
     border-bottom: 1px solid #E6EAEA;
+    padding: 0 25px 0 25px;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    transition: background 0.3s;
+    background: #F4F7F6;
 }

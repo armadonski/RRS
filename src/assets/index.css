@@ -2,10 +2,9 @@ body {
     background: #F4F7F6;
     color: #202121;
     margin: auto;
-    font-family: "apercu",sans-serif;
+    font-family: "apercu", sans-serif;
     font-size: 14px;
     font-weight: 300;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;

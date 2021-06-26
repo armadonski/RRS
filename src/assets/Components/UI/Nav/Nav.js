@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './Nav.css';
 
-const Nav = () => {
+const Nav = (props) => {
     return (
-        <div className={classes.header}>
-            Header
+        <div className={[props.sticky ? classes.sticky : null, classes.header].join(' ')}>
+            {props.children}
         </div>
     );
 }
