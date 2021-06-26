@@ -37,6 +37,8 @@ Encore
     .addStyleEntry('top_header', './assets/Components/UI/Nav/TopHeader/TopHeader.css')
     .addStyleEntry('header', './assets/Components/UI/Nav/Header/Header.css')
     .addStyleEntry('widget', './assets/Components/UI/Widget/Widget.css')
+    .addStyleEntry('language', './assets/Components/UI/Nav/Drawer/LanguageDrawer/LanguageDrawer.css')
+    .addStyleEntry('menu', './assets/Components/UI/Nav/Drawer/Menu/Menu.css')
 
     .configureCssLoader(options => {
             options.modules =
