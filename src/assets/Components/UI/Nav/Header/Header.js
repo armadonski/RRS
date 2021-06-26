@@ -6,8 +6,11 @@ import classes from './Header.css';
 const Header = (props) => {
     return (
         <Nav sticky>
-            <Menu>add_circle</Menu>
-            <p style={{justifyContent:'center'}}>Bla bla title</p>
+            <div className={classes.menu}>
+                <Menu/>
+                <span className={classes.menu_text}>Menu</span>
+            </div>
+            <p style={{justifyContent: 'center'}}>Bla bla title</p>
         </Nav>
     );
 }
