@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import Nav from "../Nav";
 import classes from './Header.css';
-import Menu from "../Drawer/Menu/Menu";
+import MenuDrawer from "../Drawer/MenuDrawer/MenuDrawer";
+import {Menu} from "@material-ui/icons";
 
 const Header = (props) => {
     const [drawerStatus, setDrawerStatus] = useState(false);
@@ -17,7 +18,7 @@ const Header = (props) => {
                 <span className={classes.menu_text}>Menu</span>
             </div>
             <p style={{justifyContent: 'center'}}>Bla bla title</p>
-            <Menu open={drawerStatus} toggleDrawer={toggleDrawer}/>
+            <MenuDrawer open={drawerStatus} toggleDrawer={toggleDrawer}/>
         </Nav>
     );
 }

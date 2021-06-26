@@ -1,7 +1,7 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer'
 
-const Menu = (props) => {
+const MenuDrawer = (props) => {
     return (
         <Drawer open={props.open} onClose={props.toggleDrawer}>
             <h5>Contact</h5>
@@ -11,4 +11,4 @@ const Menu = (props) => {
     );
 }
 
-export default Menu;
+export default MenuDrawer;
