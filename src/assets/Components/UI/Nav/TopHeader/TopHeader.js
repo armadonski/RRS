@@ -18,7 +18,6 @@ const TopHeader = (props) => {
         }
     };
 
-
     const [drawerStatus, setDrawerStatus] = useState(false);
     const toggleDrawer = () => {
         setDrawerStatus(!drawerStatus);
