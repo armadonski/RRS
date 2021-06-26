@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import Nav from "./Components/UI/Nav/Nav";
 import Content from './Components/UI/Content/Content'
 import Container from "./Components/hoc/Container";
-import Title from "./Components/UI/Title/Title";
 import TopHeader from "./Components/UI/Nav/TopHeader/TopHeader";
 import Header from "./Components/UI/Nav/Header/Header";
 
