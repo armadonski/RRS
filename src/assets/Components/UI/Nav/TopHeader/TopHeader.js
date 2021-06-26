@@ -10,9 +10,9 @@ const TopHeader = (props) => {
                 English
             </p>
             <div>
-                <Facebook/>
-                <Instagram/>
-                <Twitter/>
+                <a href=""><Facebook style={{color: '#1877F2'}}/></a>
+                <a href=""><Instagram style={{color: '#97694F'}}/></a>
+                <a href=""><Twitter style={{color: '#0996FB'}}/></a>
             </div>
         </Nav>
     );
