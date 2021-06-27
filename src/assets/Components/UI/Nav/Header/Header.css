@@ -6,6 +6,6 @@
     transition: all 0.3s ease-in-out;
 }
 
-.menu_text {
+.menu span {
     margin-left: 10px;
 }

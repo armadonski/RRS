@@ -35,7 +35,7 @@ Encore
     .addStyleEntry('app', './assets/App.css')
     .addStyleEntry('nav', './assets/Components/UI/Nav/Nav.css')
     .addStyleEntry('content', './assets/Components/UI/Content/Content.css')
-    .addStyleEntry('header', './assets/Components/UI/Nav/HeaderContent/HeaderContent.css')
+    .addStyleEntry('header', './assets/Components/UI/Nav/Header/Header.css')
     .addStyleEntry('menu', './assets/Components/UI/Nav/Drawer/MenuDrawer/MenuDrawer.css')
 
     .configureCssLoader(options => {

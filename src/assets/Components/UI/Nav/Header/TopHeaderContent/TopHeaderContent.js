@@ -1,10 +1,11 @@
 import React from 'react';
 import {Facebook, Instagram, Twitter} from "@material-ui/icons";
+import classes from '../Header.css';
 
 const TopHeaderContent = (props) => {
     return (
         <>
-            <div onClick={props.toggleDrawer}>
+            <div className={classes.menu} onClick={props.toggleDrawer}>
                 <img style={{width: '40px'}} src={props.languages[props.locale].flag}
                      alt={props.locale}/>
                 <span>

@@ -38,7 +38,7 @@ const App = (props) => {
     const languageDrawerItems = Object.keys(languageList).map((item, key) => {
         return (
             <ListItem onClick={() => changeLanguage(item)} key={key}
-                      className={item === locale ? classes.active : null}>
+                      className={[item === locale ? classes.active : null].join(' ')}>
                 <img style={{width: '40px'}} src={languageList[item].flag} alt={item}/>
                 {languageList[item].name}
             </ListItem>
