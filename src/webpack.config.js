@@ -31,13 +31,11 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('index', './assets/index.js')
-    .addStyleEntry('index_style', './assets/index.css')
+    .addStyleEntry('index_css', './assets/index.css')
+    .addStyleEntry('app', './assets/App.css')
     .addStyleEntry('nav', './assets/Components/UI/Nav/Nav.css')
     .addStyleEntry('content', './assets/Components/UI/Content/Content.css')
-    .addStyleEntry('top_header', './assets/Components/UI/Nav/TopHeader/TopHeader.css')
-    .addStyleEntry('header', './assets/Components/UI/Nav/Header/Header.css')
-    .addStyleEntry('widget', './assets/Components/UI/Widget/Widget.css')
-    .addStyleEntry('language', './assets/Components/UI/Nav/Drawer/LanguageDrawer/LanguageDrawer.css')
+    .addStyleEntry('header', './assets/Components/UI/Nav/HeaderContent/HeaderContent.css')
     .addStyleEntry('menu', './assets/Components/UI/Nav/Drawer/MenuDrawer/MenuDrawer.css')
 
     .configureCssLoader(options => {

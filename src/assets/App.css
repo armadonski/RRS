@@ -1,0 +1,11 @@
+.header {
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*cursor: pointer;*/
+    /*justify-content: space-between;*/
+    /*transition: all 0.3s ease-in-out;*/
+}
+
+.active {
+    border: 1px solid black;
+}

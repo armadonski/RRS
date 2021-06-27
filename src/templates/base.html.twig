@@ -7,14 +7,13 @@
         {% block title %}Welcome!{% endblock %}
     </title>
     {% block stylesheets %}
-        {{ encore_entry_link_tags('index_style') }}
+        {{ encore_entry_link_tags('index_css') }}
+        {{ encore_entry_link_tags('app') }}
         {{ encore_entry_link_tags('nav') }}
         {{ encore_entry_link_tags('content') }}
-        {{ encore_entry_link_tags('top_header') }}
         {{ encore_entry_link_tags('header') }}
-        {{ encore_entry_link_tags('widget') }}
         {{ encore_entry_link_tags('menu') }}
-        {{ encore_entry_link_tags('language') }}
+
     {% endblock %}
 
     {% block topScripts %}
