@@ -9,6 +9,7 @@ const HeaderContent = (props) => {
                 <Menu/>
                 <span>Menu</span>
             </div>
+            <h1>{props.title}</h1>
         </>
     );
 }

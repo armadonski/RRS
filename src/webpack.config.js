@@ -37,6 +37,7 @@ Encore
     .addStyleEntry('content', './assets/Components/UI/Content/Content.css')
     .addStyleEntry('header', './assets/Components/UI/Nav/Header/Header.css')
     .addStyleEntry('menu', './assets/Components/UI/Nav/Drawer/MenuDrawer/MenuDrawer.css')
+    .addStyleEntry('widget', './assets/Components/UI/Widget/Widget.css')
 
     .configureCssLoader(options => {
             options.modules =
