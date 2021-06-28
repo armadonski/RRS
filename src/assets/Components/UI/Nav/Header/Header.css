@@ -4,6 +4,11 @@
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 20px;
+    border-right: 1px solid #E6EAEA;
+    flex: 0 0 15em;
 }
 
 .menu span {

@@ -38,9 +38,9 @@ const App = (props) => {
     const languageDrawerItems = Object.keys(languageList).map((item, key) => {
         return (
             <ListItem onClick={() => changeLanguage(item)} key={key}
-                      className={[item === locale ? classes.active : null].join(' ')}>
-                <img style={{width: '40px'}} src={languageList[item].flag} alt={item}/>
-                {languageList[item].name}
+                      className={[classes.drawerItem, item === locale ? classes.active : null].join(' ')}>
+                <img src={languageList[item].flag} alt={item}/>
+                <span>{languageList[item].name}</span>
             </ListItem>
         )
     });
@@ -53,11 +53,11 @@ const App = (props) => {
     return (
         <Container>
             <Header drawerState={languageDrawerState} toggleDrawer={toggleLanguageDrawer}
-                    drawerItems={languageDrawerItems}>
+                    drawerItems={languageDrawerItems} drawerTitle='Select a language'>
                 <TopHeaderContent toggleDrawer={toggleLanguageDrawer} languages={languageList} locale={props.locale}/>
             </Header>
             <Header drawerState={menuDrawerState} toggleDrawer={toggleMenuDrawer} drawerItems={menuDrawerItems}
-                    sticky>
+                    sticky drawerTitle='Select an option'>
                 <HeaderContent toggleDrawer={toggleMenuDrawer}/>
             </Header>
             <Content>

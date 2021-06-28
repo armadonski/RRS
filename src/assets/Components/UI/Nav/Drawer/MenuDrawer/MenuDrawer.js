@@ -8,9 +8,14 @@ const MenuDrawer = (props) => {
     return (
         <Drawer open={props.open} onClose={props.toggleDrawer}>
             <List>
-                <ListItem className={classes.close} onClick={props.toggleDrawer}>
-                    <span>Close</span>
-                    <Close/>
+                <ListItem onClick={props.toggleDrawer}>
+                    <div className={classes.drawerHeader}>
+                        {props.drawerTitle}
+                        <div className={classes.close}>
+                            <span>Close</span>
+                            <Close/>
+                        </div>
+                    </div>
                 </ListItem>
                 <Divider/>
                 <div className={classes.drawerContent}>
