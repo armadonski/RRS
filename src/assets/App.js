@@ -8,6 +8,7 @@ import en from "./Components/UI/Nav/Drawer/LanguageFlags/en.svg";
 import ro from "./Components/UI/Nav/Drawer/LanguageFlags/ro.svg";
 import {ListItem} from "@material-ui/core";
 import classes from './App.css';
+import {ContactMail, Info, Payment} from "@material-ui/icons";
 
 const App = (props) => {
     const languageList = {
@@ -46,9 +47,20 @@ const App = (props) => {
     });
 
     const menuDrawerItems =
-        <ListItem>
-            dsa
-        </ListItem>;
+        <div>
+            <ListItem className={classes.drawerItem}>
+                <Info/>
+                <span>About</span>
+            </ListItem>
+            <ListItem className={classes.drawerItem}>
+                <ContactMail/>
+                <span>Contact us</span>
+            </ListItem>
+            <ListItem className={classes.drawerItem}>
+                <Payment/>
+                <span>Plans</span>
+            </ListItem>
+        </div>
 
     return (
         <Container>
