@@ -1,0 +1,10 @@
+.container {
+    padding: 50px;
+    margin: 20px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}

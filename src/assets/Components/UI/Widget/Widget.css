@@ -1,7 +1,5 @@
-.widget {
-    margin: 20px;
-    background-repeat: no-repeat, repeat;
-    block-size: fit-content;
-    height: 500px;
-    width: 800px;
-}
+/*.widget {*/
+/*    block-size: fit-content;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/

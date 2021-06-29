@@ -10,6 +10,9 @@ import {ListItem} from "@material-ui/core";
 import classes from './App.css';
 import {ContactMail, Info, Payment} from "@material-ui/icons";
 import Widget from "./Components/UI/Widget/Widget";
+import Steps from "./Components/Articles/Steps/Steps";
+import About from "./Components/Articles/About/About";
+import Contact from "./Components/Articles/Contact/Contact";
 
 const App = (props) => {
     const languageList = {
@@ -24,14 +27,14 @@ const App = (props) => {
     };
 
     const articles = [
-        'life', 'this', 'is', 'djkshajkdgsagdksa'
+        <About/>,
+        <Steps/>,
+        <Contact/>
     ];
 
     const [languageDrawerState, setLanguageDrawerState] = useState(false);
     const [menuDrawerState, setMenuDrawerState] = useState(false);
     const [title, setTitle] = useState('index');
-
-    const boatBackground = require('./Components/UI/Widget/WidgetImages/boats.png');
 
     const toggleLanguageDrawer = () => {
         setLanguageDrawerState(!languageDrawerState);
@@ -82,7 +85,7 @@ const App = (props) => {
             </Header>
             <Content>
                 {articles.map((article, key) => {
-                    return <Widget background={boatBackground} key={key}>
+                    return <Widget key={key}>
                         {article}
                     </Widget>;
                 })}

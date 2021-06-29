@@ -38,6 +38,9 @@ Encore
     .addStyleEntry('header', './assets/Components/UI/Nav/Header/Header.css')
     .addStyleEntry('menu', './assets/Components/UI/Nav/Drawer/MenuDrawer/MenuDrawer.css')
     .addStyleEntry('widget', './assets/Components/UI/Widget/Widget.css')
+    .addStyleEntry('steps', './assets/Components/Articles/Steps/Steps.css')
+    .addStyleEntry('contact', './assets/Components/Articles/Contact/Contact.css')
+    .addStyleEntry('about', './assets/Components/Articles/About/About.css')
 
     .configureCssLoader(options => {
             options.modules =
