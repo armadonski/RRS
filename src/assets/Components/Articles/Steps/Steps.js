@@ -3,7 +3,7 @@ import classes from './Steps.css';
 
 const Steps = () => {
     return (
-        <div className={classes.container}>
+        <div className={classes.container} id='steps'>
             <div>
                 <h1>How it works</h1>
             </div>
