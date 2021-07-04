@@ -5,10 +5,24 @@
     flex-direction: row;
     box-sizing: border-box;
     justify-content: space-around;
+
+}
+
+.container h1 {
+    font-size: xx-large;
+}
+
+.container span {
+    font-size: large;
 }
 
 .about {
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+}
+
+.button {
+    margin-top: auto;
 }

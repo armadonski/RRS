@@ -11,11 +11,14 @@ menu:
   contact: 'Contact'
   steps: 'Pași'
 about_message:
-  header: ''
-  message: ''
+  header: 'Angajează un profesionist să te ajute să-ți dezvolți afacerea'
+  message: 'Din momentul contactului îți vom răspunde la orice întrebare, vom lua decizii legate de design-ul site-ului web, vom discuta așteptările iar apoi vom livra rezultate.'
 steps_message:
-  header: ''
-  step_1: ''
-  step_2: ''
-  step_3: ''
+  header: 'Cum funcționează'
+  step_1_header: 'Trimite-ne o cerere'
+  step_1: "După trimiterea cererii, noi te vom contacta."
+  step_2_header: 'Discutăm nevoile tale'
+  step_2: 'După ce te vom contacta, poți întreba orice, vom discuta obiectivele proiectului și așteptările tale, gama de prețuri și vom explora opțiuni.'
+  step_3_header: 'La Treabă'
+  step_3: 'Împreună vom durata proiectului, detaliile proiectului care te vor ajuta să-ți aduci ideile la viață. '
 contact: 'c'

@@ -5,8 +5,20 @@
     margin: 20px;
 }
 
+.container h1 {
+    font-size: xx-large;
+}
+
+.container h2 {
+    font-size: x-large;
+}
+
+.container span {
+    font-size: large;
+}
+
 .steps {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     box-sizing: border-box;
 }

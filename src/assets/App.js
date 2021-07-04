@@ -25,12 +25,6 @@ const App = (props) => {
     const aboutRef = useRef(null);
     const stepsRef = useRef(null);
 
-    const articles = [
-        <div style={{padding: '20px'}} ref={aboutRef}><About/></div>,
-        <div style={{padding: '20px'}} ref={stepsRef}><Steps/></div>,
-        <div style={{padding: '20px'}} ref={contactRef}><Contact/></div>
-    ];
-
     const toggleLanguageDrawer = () => {
         setLanguageDrawerState(!languageDrawerState);
     };
@@ -99,6 +93,12 @@ const App = (props) => {
         if (aboutRef.current) observer.observe(aboutRef.current);
 
     }, [contactRef, stepsRef, aboutRef, options]);
+
+    const articles = [
+        <div style={{padding: '20px'}} ref={aboutRef}><About clicked={scrollToContact}/></div>,
+        <div style={{padding: '20px'}} ref={stepsRef}><Steps/></div>,
+        <div style={{padding: '20px'}} ref={contactRef}><Contact/></div>
+    ];
 
     return (
         <Container>

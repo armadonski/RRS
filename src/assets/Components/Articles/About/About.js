@@ -9,15 +9,21 @@ const About = (props) => {
         <div className={classes.container} id='about' ref={props.ref}>
             <div className={classes.about}>
                 <h1>
-                    Hire a professional to help grow your business
+                    {t('about_message.header')}
                 </h1>
-                <span style={{maxWidth: '200px'}}>
-                From designing and promoting your website to setting up your online store, get matched with vetted agencies and freelancers who can help deliver real results.
+                <span style={{maxWidth: '50%'}}>
+                    {t('about_message.message')}
             </span>
+                <div className={classes.button}>
+                    <button onClick={props.clicked}>
+                        Contact us now!
+                    </button>
+                </div>
             </div>
             <div style={{width: '100%', height: '400px', background: 'darkgrey'}}>
 
             </div>
+
         </div>
     );
 }
