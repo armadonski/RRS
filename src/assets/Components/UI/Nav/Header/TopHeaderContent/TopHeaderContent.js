@@ -1,15 +1,19 @@
 import React from 'react';
 import {Facebook, Instagram, Twitter} from "@material-ui/icons";
 import classes from '../Header.css';
+import {useTranslation} from 'react-i18next';
+import i18n from '../../../../../i18n';
 
 const TopHeaderContent = (props) => {
+    const {t, i18n} = useTranslation();
+
     return (
         <>
             <div className={classes.menu} onClick={props.toggleDrawer}>
                 <img style={{width: '40px'}} src={props.languages[props.locale].flag}
                      alt={props.locale}/>
                 <span>
-                    {props.languages[props.locale].name}
+                    {t(props.languages[props.locale].name)}
                 </span>
             </div>
             <div>

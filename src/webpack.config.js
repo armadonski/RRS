@@ -41,6 +41,7 @@ Encore
     .addStyleEntry('steps', './assets/Components/Articles/Steps/Steps.css')
     .addStyleEntry('contact', './assets/Components/Articles/Contact/Contact.css')
     .addStyleEntry('about', './assets/Components/Articles/About/About.css')
+    .addStyleEntry('drawer_items', './assets/Components/UI/Nav/Drawer/DrawerItems.css')
 
     .configureCssLoader(options => {
             options.modules =
