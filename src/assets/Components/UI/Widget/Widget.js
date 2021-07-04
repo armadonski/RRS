@@ -3,9 +3,9 @@ import classes from './Widget.css';
 
 const Widget = props => {
     return (
-        <>
+        <div className={classes.widget}>
             {props.children}
-        </>
+        </div>
     );
 }
 

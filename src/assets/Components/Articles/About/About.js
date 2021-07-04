@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './About.css';
 
-const About = () => {
+const About = (props) => {
     return (
-        <div className={classes.container} id='about'>
+        <div className={classes.container} id='about' ref={props.ref}>
             <div className={classes.about}>
                 <h1>
                     Hire a professional to help grow your business
@@ -12,7 +12,7 @@ const About = () => {
                 From designing and promoting your website to setting up your online store, get matched with vetted agencies and freelancers who can help deliver real results.
             </span>
             </div>
-            <div style={{width: '100%', height: '800px', background: 'darkgrey'}}>
+            <div style={{width: '100%', height: '400px', background: 'darkgrey'}}>
 
             </div>
         </div>
