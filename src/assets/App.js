@@ -11,20 +11,24 @@ import Contact from "./Components/Articles/Contact/Contact";
 import LanguageDrawerItems from "./Components/UI/Nav/Drawer/LanguageDrawerItems/LanguageDrawerItems";
 import MenuDrawerItems from "./Components/UI/Nav/Drawer/MenuDrawerItems/MenuDrawerItems";
 import languageList from "./languageList";
+import i18n from './i18n';
+import {useTranslation} from "react-i18next";
 
 const App = (props) => {
     const [languageDrawerState, setLanguageDrawerState] = useState(false);
     const [menuDrawerState, setMenuDrawerState] = useState(false);
     const [title, setTitle] = useState(null);
 
+    const {t, i18n} = useTranslation();
+
     const contactRef = useRef(null);
     const aboutRef = useRef(null);
     const stepsRef = useRef(null);
 
     const articles = [
-        <div ref={aboutRef}><About/></div>,
-        <div ref={stepsRef}><Steps/></div>,
-        <div ref={contactRef}><Contact/></div>
+        <div style={{padding: '20px'}} ref={aboutRef}><About/></div>,
+        <div style={{padding: '20px'}} ref={stepsRef}><Steps/></div>,
+        <div style={{padding: '20px'}} ref={contactRef}><Contact/></div>
     ];
 
     const toggleLanguageDrawer = () => {
@@ -49,19 +53,19 @@ const App = (props) => {
             switch (entry.target) {
                 case aboutRef.current : {
                     if (entry.isIntersecting) {
-                        setTitle('about');
+                        setTitle('menu.about');
                     }
                     break;
                 }
                 case contactRef.current : {
                     if (entry.isIntersecting) {
-                        setTitle('contact');
+                        setTitle('menu.contact');
                     }
                     break;
                 }
                 case stepsRef.current : {
                     if (entry.isIntersecting) {
-                        setTitle('steps');
+                        setTitle('menu.steps');
                     }
                     break;
                 }
@@ -72,6 +76,22 @@ const App = (props) => {
         })
     }
     const observer = new IntersectionObserver(callback, options);
+
+    const scrollToAbout = () => {
+        aboutRef.current.scrollIntoView({behavior: 'smooth'});
+        setMenuDrawerState(false);
+    };
+
+    const scrollToSteps = () => {
+        stepsRef.current.scrollIntoView({behavior: 'smooth'});
+        setMenuDrawerState(false);
+    };
+
+    const scrollToContact = () => {
+        contactRef.current.scrollIntoView({behavior: 'smooth'});
+        setMenuDrawerState(false);
+    };
+
 
     useEffect(() => {
         if (contactRef.current) observer.observe(contactRef.current);
@@ -84,13 +104,20 @@ const App = (props) => {
         <Container>
             <Header drawerState={languageDrawerState} toggleDrawer={toggleLanguageDrawer}
                     drawerItems={<LanguageDrawerItems languageList={languageList} changeLanguage={changeLanguage}/>}
-                    drawerTitle='Select a language'>
+                    drawerTitle={t('language.message')}>
                 <TopHeaderContent toggleDrawer={toggleLanguageDrawer} languages={languageList}
                                   locale={props.locale}/>
             </Header>
-            <Header drawerState={menuDrawerState} toggleDrawer={toggleMenuDrawer} drawerItems={<MenuDrawerItems/>}
-                    sticky drawerTitle='Select an option'>
-                <HeaderContent toggleDrawer={toggleMenuDrawer} title={title}/>
+            <Header drawerState={menuDrawerState} toggleDrawer={toggleMenuDrawer} drawerItems={
+                <MenuDrawerItems
+                    activeOption={title}
+                    about={scrollToAbout}
+                    steps={scrollToSteps}
+                    contact={scrollToContact}
+                />
+            }
+                    sticky drawerTitle={t('menu.message')}>
+                <HeaderContent toggleDrawer={toggleMenuDrawer} title={t(title)}/>
             </Header>
             <Content>
                 {articles.map((article, key) => {

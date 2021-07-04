@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Steps.css';
 
 const Steps = () => {
+
     return (
         <div className={classes.container} id='steps'>
             <div>

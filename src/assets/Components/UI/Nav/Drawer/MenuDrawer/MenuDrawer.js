@@ -3,8 +3,11 @@ import Drawer from '@material-ui/core/Drawer'
 import {Close} from "@material-ui/icons";
 import classes from './MenuDrawer.css';
 import {Divider, List, ListItem} from "@material-ui/core";
+import {useTranslation} from "react-i18next";
 
 const MenuDrawer = (props) => {
+    const {t, i18n} = useTranslation();
+
     return (
         <Drawer open={props.open} onClose={props.toggleDrawer}>
             <List>
@@ -12,7 +15,7 @@ const MenuDrawer = (props) => {
                     <div className={classes.drawerHeader}>
                         {props.drawerTitle}
                         <div className={classes.close}>
-                            <span>Close</span>
+                            <span>{t('buttons.close')}</span>
                             <Close/>
                         </div>
                     </div>

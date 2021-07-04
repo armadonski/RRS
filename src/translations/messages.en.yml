@@ -1,3 +1,21 @@
 language:
   ro: 'Romanian'
   en: 'English'
+  message: 'Select a language'
+buttons:
+  close: 'Close'
+menu:
+  button: 'Menu'
+  message: 'Select an option'
+  about: 'About'
+  contact: 'Contact'
+  steps: 'Steps'
+about_message:
+  header: ''
+  message: ''
+steps_message:
+  header: ''
+  step_1: ''
+  step_2: ''
+  step_3: ''
+contact: 'c'

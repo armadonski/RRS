@@ -1,7 +1,10 @@
 import React from 'react';
 import classes from './About.css';
+import {useTranslation} from "react-i18next";
 
 const About = (props) => {
+    const {t, i18n} = useTranslation();
+
     return (
         <div className={classes.container} id='about' ref={props.ref}>
             <div className={classes.about}>
