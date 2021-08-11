@@ -1,20 +1,5 @@
 .container {
-    background: black;
-    color: white;
-    padding: 50px;
-    margin: 20px;
-}
-
-.container h1 {
-    font-size: xx-large;
-}
-
-.container h2 {
-    font-size: x-large;
-}
-
-.container span {
-    font-size: large;
+    /*color: white;*/
 }
 
 .steps {

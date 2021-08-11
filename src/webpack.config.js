@@ -31,6 +31,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('index', './assets/index.js')
+    .addEntry('mini-game', './assets/miniGame.js')
     .addStyleEntry('index_css', './assets/index.css')
     .addStyleEntry('app', './assets/App.css')
     .addStyleEntry('nav', './assets/Components/UI/Nav/Nav.css')
@@ -42,6 +43,9 @@ Encore
     .addStyleEntry('contact', './assets/Components/Articles/Contact/Contact.css')
     .addStyleEntry('about', './assets/Components/Articles/About/About.css')
     .addStyleEntry('drawer_items', './assets/Components/UI/Nav/Drawer/DrawerItems.css')
+    .addStyleEntry('tetris', './assets/MiniGame/Tetris/Tetris.css')
+    .addStyleEntry('game-box', './assets/MiniGame/Tetris/GameBox/GameBox.css')
+    .addStyleEntry('square', './assets/MiniGame/Tetris/GameBox/Square/Square.css')
 
     .configureCssLoader(options => {
             options.modules =

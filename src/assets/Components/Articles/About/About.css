@@ -1,28 +1,14 @@
 .container {
-    padding: 50px 0 50px 50px;
-    margin: 20px;
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    justify-content: space-around;
-
-}
-
-.container h1 {
-    font-size: xx-large;
-}
-
-.container span {
-    font-size: large;
+    /*color: white;*/
 }
 
 .about {
-    margin-left: 20px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
 }
 
 .button {
-    margin-top: auto;
+    margin-top: 22%;
+    /*margin-top: auto;*/
 }

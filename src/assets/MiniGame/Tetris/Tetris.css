@@ -1,0 +1,7 @@
+.Container {
+    width: 1000px;
+    height: 5000px;
+    background: red;
+    color: red;
+    display: flex;
+}

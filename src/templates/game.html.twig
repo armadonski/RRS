@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('tetris') }}
+        {{ encore_entry_link_tags('game-box') }}
+        {{ encore_entry_link_tags('square') }}
+    {% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('mini-game') }}
+    {% endblock %}
+{% block body %}
+    {{ parent() }}
+{% endblock %}
+
