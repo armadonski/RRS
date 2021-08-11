@@ -3,13 +3,6 @@ import Container from '../../Components/hoc/Container';
 import classes from './Tetris.css';
 import GameBox from "./GameBox/GameBox";
 
-const Tetris = props => {
-
-    return (
-        // <Container className={classes.Container}>
-            <GameBox />
-        // </Container>
-    );
-};
+const Tetris = props => <div className={classes.Container}><GameBox/></div>;
 
 export default Tetris;

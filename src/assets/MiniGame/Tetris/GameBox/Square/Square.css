@@ -1,4 +1,7 @@
 .square {
-    width: 10vh;
-    height: 10vh;
+    width: 5vh;
+    height: 5vh;
+    background: #147dc2;
+    border: 1px black solid;
+    text-align: center;
 }

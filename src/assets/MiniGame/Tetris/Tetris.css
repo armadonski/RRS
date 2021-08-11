@@ -1,7 +1,4 @@
 .Container {
-    width: 1000px;
-    height: 5000px;
-    background: red;
-    color: red;
-    display: flex;
+    margin-top: 10vh;
+    margin-left: 10vh;
 }

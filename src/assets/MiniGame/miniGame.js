@@ -29,7 +29,7 @@ const MiniGame = props => {
                 <TopHeaderContent toggleDrawer={toggleLanguageDrawer} languages={languageList}
                                   locale={props.locale}/>
             </Header>
-            {/*<Tetris/>*/}
+            <Tetris/>
         </Container>
     );
 };
