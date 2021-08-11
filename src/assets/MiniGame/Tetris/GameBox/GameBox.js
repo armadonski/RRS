@@ -5,7 +5,8 @@ import Square from "./Square/Square";
 
 const GameBox = props => {
     const [piecePosition, setPiecePosition] = useState(null);
-    const [piece, setPiece] = useState(null);
+    const [activePiece, setActivePiece] = useState(null);
+    const [staticPieces, setStaticPieces] = useState([]);
     const [gameStatus, setGameStatus] = useState(true);
 
     const noOfSquares = 60;
@@ -29,58 +30,70 @@ const GameBox = props => {
         return square;
     });
 
-    const moveLeft = () => {
-
-    }
-
     const movePiece = (piece, initialPosition) => {
         let nextPosition = initialPosition + noOfColumns;
 
         if (true === gameStatus) {
             if (nextPosition >= noOfSquares) {
-                setGameStatus(false);
-
-                return null;
+                nextPosition = Math.floor(Math.random() * 4);
+                setStaticPieces([...staticPieces, piece]);
             }
 
             let domNode = ReactDOM.findDOMNode(squareRefs[nextPosition].current)
             let elementPos = domNode.getBoundingClientRect();
-            let initialPiece = <Square background='red' absolute zIndex={1}
-                                       top={elementPos.top}
-                                       left={elementPos.left}
-                                       right={elementPos.right} bottom={elementPos.bottom}/>;
+            let activePiece = <Square background='red' absolute zIndex={1}
+                                      top={elementPos.top}
+                                      left={elementPos.left}
+                                      right={elementPos.right} bottom={elementPos.bottom}/>;
+
             setTimeout(
                 () => {
-                    setPiece(initialPiece)
-                    movePiece(initialPiece, nextPosition);
+                    setActivePiece(activePiece)
+                    movePiece(activePiece, nextPosition);
                 },
                 500);
         }
     }
 
+    const keyPressHandler = e => {
+        switch (e.key) {
+            case 'a' : {
+                break;
+            }
+            case 'd': {
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+    };
+
     useEffect(() => {
-        const startPos = Math.floor(Math.random() * 3);
+        const startPos = Math.floor(Math.random() * 4);
         const domNode = ReactDOM.findDOMNode(squareRefs[startPos].current)
         const elementPos = domNode.getBoundingClientRect();
         const initialPiece = <Square background='red' absolute zIndex={1} top={elementPos.top} left={elementPos.left}
                                      right={elementPos.right} bottom={elementPos.bottom}/>;
         setPiecePosition(elementPos);
-        setPiece(initialPiece);
+        setActivePiece(initialPiece);
+
+        document.addEventListener('keypress', e => {
+            keyPressHandler(e);
+        })
 
         movePiece(initialPiece, startPos);
     }, [])
 
     return (
-        <>
-            {
-                piece
-            }
+        <div>
             <div className={classes.game_box__container}>
-                {
-                    mappedSquares
-                }
+                {staticPieces.map(piece => {
+                    return piece;
+                })}
+                {activePiece}{mappedSquares}
             </div>
-        </>
+        </div>
     );
 };
 
