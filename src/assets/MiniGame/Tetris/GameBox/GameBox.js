@@ -4,8 +4,8 @@ import classes from './GameBox.css';
 import Square from "./Square/Square";
 
 const GameBox = props => {
-    const [piecePosition, setPiecePosition] = useState(null);
     const [activePiece, setActivePiece] = useState(null);
+    const [activePiecePosition, setActivePiecePosition] = useState(true);
     const [staticPieces, setStaticPieces] = useState([]);
     const [gameStatus, setGameStatus] = useState(true);
 
@@ -37,16 +37,17 @@ const GameBox = props => {
             if (nextPosition >= noOfSquares) {
                 nextPosition = Math.floor(Math.random() * 4);
             }
+            setActivePiecePosition(nextPosition);
             let domNode = ReactDOM.findDOMNode(squareRefs[nextPosition].current)
             let elementPos = domNode.getBoundingClientRect();
-            let activePiece = <Square background='red' absolute zIndex={1}
+            let activePiece = <Square key={initialPosition} background='red' absolute zIndex={1}
                                       top={elementPos.top}
                                       left={elementPos.left}
                                       right={elementPos.right} bottom={elementPos.bottom}/>;
 
             setTimeout(
                 () => {
-                    setActivePiece(activePiece)
+                    setActivePiece(activePiece);
                     movePiece(activePiece, nextPosition);
                 },
                 100);
@@ -73,7 +74,6 @@ const GameBox = props => {
         const elementPos = domNode.getBoundingClientRect();
         const initialPiece = <Square background='red' absolute zIndex={1} top={elementPos.top} left={elementPos.left}
                                      right={elementPos.right} bottom={elementPos.bottom}/>;
-        setPiecePosition(elementPos);
         setActivePiece(initialPiece);
 
         document.addEventListener('keypress', e => {
@@ -84,8 +84,30 @@ const GameBox = props => {
 
     }, [])
 
-    useEffect(()=> {        console.log(staticPieces);
-    }, [staticPieces])
+    useEffect(() => {
+        if (activePiecePosition >= noOfSquares - noOfColumns) {
+            if (0 === staticPieces.length) {
+                setStaticPieces([...staticPieces, activePiece]);
+            }
+            staticPieces.map(piece => {
+                if (activePiece.key === piece.key) {
+                    let domNode = ReactDOM.findDOMNode(squareRefs[piece.key].current)
+                    let elementPos = domNode.getBoundingClientRect();
+
+                    let pieceStack = <Square background='green' absolute zIndex={1}
+                                             top={elementPos.top}
+                                             left={elementPos.left}
+                                             right={elementPos.right} bottom={elementPos.bottom}
+                    />;
+
+                    setStaticPieces([...staticPieces, pieceStack]);
+                } else {
+                    setStaticPieces([...staticPieces, activePiece]);
+                }
+            })
+            return null;
+        }
+    }, [activePiece])
 
     return (
         <div>
