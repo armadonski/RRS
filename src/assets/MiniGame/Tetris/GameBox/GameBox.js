@@ -36,9 +36,7 @@ const GameBox = props => {
         if (true === gameStatus) {
             if (nextPosition >= noOfSquares) {
                 nextPosition = Math.floor(Math.random() * 4);
-                setStaticPieces([...staticPieces, piece]);
             }
-
             let domNode = ReactDOM.findDOMNode(squareRefs[nextPosition].current)
             let elementPos = domNode.getBoundingClientRect();
             let activePiece = <Square background='red' absolute zIndex={1}
@@ -51,7 +49,7 @@ const GameBox = props => {
                     setActivePiece(activePiece)
                     movePiece(activePiece, nextPosition);
                 },
-                500);
+                100);
         }
     }
 
@@ -83,14 +81,16 @@ const GameBox = props => {
         })
 
         movePiece(initialPiece, startPos);
+
     }, [])
+
+    useEffect(()=> {        console.log(staticPieces);
+    }, [staticPieces])
 
     return (
         <div>
             <div className={classes.game_box__container}>
-                {staticPieces.map(piece => {
-                    return piece;
-                })}
+                {staticPieces.map(piece => piece)}
                 {activePiece}{mappedSquares}
             </div>
         </div>
