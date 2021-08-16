@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import classes from './GameBox.css';
 import Square from "./Square/Square";
+import {keys} from "@material-ui/core/styles/createBreakpoints";
 
 const GameBox = props => {
         const [activePiece, setActivePiece] = useState(null);
@@ -62,49 +63,24 @@ const GameBox = props => {
             return null === key ? elementWithoutKey : elementWithKey;
         }
 
-        const movePiece = (position) => {
-            if (position < noOfSquares - noOfColumns) {
-                setTimeout(function () {
+        const movePiece = () => {
+            setTimeout(function () {
+                if (null !== activePiece) {
+                    const nextPosition = activePiecePosition + noOfColumns;
 
-                    position += noOfColumns;
-                    const newActivePiece = createPiece(position, 'blue');
+                    const staticPositions = staticPieces.map(piece => {
+                        return parseInt(piece.key);
+                    });
 
-                    if (staticPieces.length !== 0) {
-                        staticPieces.map(piece => {
-                            if (piece.key === position) {
-                                const domNode = ReactDOM.findDOMNode(squareRefs[piece.key - noOfColumns].current)
-                                const position = domNode.getBoundingClientRect();
-
-                                addStaticPieces(React.cloneElement(piece), {
-                                    top: position.top,
-                                    bottom: position.bottom,
-                                    left: position.left,
-                                    right: position.right
-                                });
-                                console.log(staticPieces);
-                                return null;
-                            } else {
-                                setActivePiecePosition(position);
-                                setActivePiece(newActivePiece);
-                                // addStaticPieces(createPiece(position, 'green', position));
-                                // generateNewPiece();
-                            }
-                        })
+                    if (true !== staticPositions.includes(activePiecePosition, staticPositions)) {
+                        setActivePiece(createPiece(nextPosition, 'red'));
+                        setActivePiecePosition(nextPosition);
                     } else {
-                        setActivePiecePosition(position);
-                        setActivePiece(newActivePiece);
+                        setActivePiece(null);
+                        setActivePiecePosition(null);
                     }
-
-
-                }, 100)
-            } else {
-                addStaticPieces(createPiece(position, 'green', position));
-                generateNewPiece();
-            }
-        }
-
-        const addStaticPieces = piece => {
-            setStaticPieces([...staticPieces, piece]);
+                }
+            }, 50);
         }
 
         useEffect(() => {
@@ -112,11 +88,28 @@ const GameBox = props => {
                 generateNewPiece();
             }
 
-        }, [])
+        }, [activePiecePosition])
 
         useEffect(() => {
-                if (null !== activePiecePosition && activePiecePosition < activePiecePosition + noOfColumns) {
-                    movePiece(activePiecePosition)
+                if (activePiecePosition >= noOfSquares - noOfColumns) {
+                    const staticPositions = staticPieces.map(piece => {
+                        return parseInt(piece.key);
+                    });
+
+                    if (true === staticPositions.includes(activePiecePosition, staticPositions)) {
+                        const position = activePiecePosition - noOfColumns;
+                        setActivePiece(null);
+                        setActivePiecePosition(null);
+                        setStaticPieces([...staticPieces, createPiece(position, 'orange', position)]);
+
+                        return true;
+                    } else {
+                        setStaticPieces([...staticPieces, createPiece(activePiecePosition, 'green', activePiecePosition)]);
+                        setActivePiece(null);
+                        setActivePiecePosition(null);
+                    }
+                } else {
+                    movePiece();
                 }
             }, [activePiece]
         );
