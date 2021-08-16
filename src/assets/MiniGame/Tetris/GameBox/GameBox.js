@@ -76,8 +76,9 @@ const GameBox = props => {
                         setActivePiece(createPiece(nextPosition, 'red'));
                         setActivePiecePosition(nextPosition);
                     } else {
-                        setActivePiece(null);
+                        setStaticPieces([...staticPieces, createPiece(activePiecePosition - noOfColumns, 'orange', activePiecePosition - noOfColumns)]);
                         setActivePiecePosition(null);
+                        setActivePiece(null);
                     }
                 }
             }, 50);
@@ -98,11 +99,12 @@ const GameBox = props => {
 
                     if (true === staticPositions.includes(activePiecePosition, staticPositions)) {
                         const position = activePiecePosition - noOfColumns;
+
                         setActivePiece(null);
                         setActivePiecePosition(null);
                         setStaticPieces([...staticPieces, createPiece(position, 'orange', position)]);
 
-                        return true;
+                        console.log('here');
                     } else {
                         setStaticPieces([...staticPieces, createPiece(activePiecePosition, 'green', activePiecePosition)]);
                         setActivePiece(null);
