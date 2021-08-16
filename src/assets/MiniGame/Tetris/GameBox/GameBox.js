@@ -2,13 +2,13 @@ import React, {useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import classes from './GameBox.css';
 import Square from "./Square/Square";
-import {keys} from "@material-ui/core/styles/createBreakpoints";
 
 const GameBox = props => {
         const [activePiece, setActivePiece] = useState(null);
         const [activePiecePosition, setActivePiecePosition] = useState(null);
         const [staticPieces, setStaticPieces] = useState([]);
         const [gameStatus, setGameStatus] = useState(true);
+        const [rows, setRows] = useState([]);
 
         const noOfSquares = 140;
         const noOfColumns = 10;
@@ -104,12 +104,6 @@ const GameBox = props => {
         }, [activePiecePosition])
 
         useEffect(() => {
-            const staticKeys = staticPieces.map(piece => {
-                return piece.key;
-            });
-        }, [staticPieces])
-
-        useEffect(() => {
                 if (activePiecePosition >= noOfSquares - noOfColumns && true === gameStatus) {
                     const staticPositions = staticPieces.map(piece => {
                         return parseInt(piece.key);
@@ -140,15 +134,24 @@ const GameBox = props => {
             }
         }, [gameStatus])
 
+        const getRows = () => {
+            const squareKeys = squares.map(piece => {
+                return piece.key;
+            })
+
+            return squareKeys.chunk(noOfColumns);
+        }
+
         useEffect(() => {
-                const staticPositions = staticPieces.map(piece => {
-                    return piece.key
-                });
-            },
 
 
-            [staticPieces]
+            }, [staticPieces]
         );
+
+        useEffect(() => {
+            const rows = getRows();
+            setRows(rows);
+        }, []);
 
         return (
             <div>
