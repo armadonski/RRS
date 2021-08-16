@@ -10,7 +10,7 @@ const GameBox = props => {
         const [gameStatus, setGameStatus] = useState(true);
         const [rows, setRows] = useState([]);
 
-        const noOfSquares = 140;
+        const noOfSquares = 100;
         const noOfColumns = 10;
         const templateColumns = () => {
             let noColumns = '';
@@ -75,6 +75,7 @@ const GameBox = props => {
             const staticPositions = staticPieces.map(piece => {
                 return parseInt(piece.key);
             });
+
             for (let i = 0; i < noOfColumns; i++) {
                 if (true === staticPositions.includes(i)) {
                     setGameStatus(false);
@@ -93,7 +94,7 @@ const GameBox = props => {
                         setActivePiece(null);
                     }
                 }
-            }, 1);
+            }, 100);
         }
 
         useEffect(() => {
@@ -126,6 +127,17 @@ const GameBox = props => {
             }, [activePiece]
         );
 
+        const moveLeft = () => {
+            const elementPos = getElementPosition(activePiecePosition - 1);
+            setActivePiece(<Square background='red' absolute zIndex={1} top={elementPos.top}
+                                   left={elementPos.left}
+                                   right={elementPos.right} bottom={elementPos.bottom}/>)
+            setActivePiecePosition(activePiecePosition - 1);
+        };
+        const moveRight = () => {
+            setActivePiece(createPiece(activePiecePosition + 1));
+        };
+
         useEffect(() => {
             if (false === gameStatus) {
                 console.log('Game Over!')
@@ -134,6 +146,25 @@ const GameBox = props => {
             }
         }, [gameStatus])
 
+        useEffect(() => {
+                console.log(activePiecePosition);
+                document.addEventListener('keydown', e => {
+                    if (null !== activePiecePosition) {
+                        switch (e.key) {
+                            case 'a': {
+                                moveLeft();
+                                break;
+                            }
+                            case 'd': {
+                                moveRight();
+                                break;
+                            }
+                        }
+                    }
+                })
+            },
+            [activePiecePosition])
+
         const getRows = () => {
             const squareKeys = squares.map(piece => {
                 return piece.key;
@@ -141,17 +172,6 @@ const GameBox = props => {
 
             return squareKeys.chunk(noOfColumns);
         }
-
-        useEffect(() => {
-
-
-            }, [staticPieces]
-        );
-
-        useEffect(() => {
-            const rows = getRows();
-            setRows(rows);
-        }, []);
 
         return (
             <div>
