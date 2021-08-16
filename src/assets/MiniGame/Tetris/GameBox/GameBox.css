@@ -1,6 +1,5 @@
 .game_box__container {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
     grid-gap: 0 0;
     width: 10vh;
 }

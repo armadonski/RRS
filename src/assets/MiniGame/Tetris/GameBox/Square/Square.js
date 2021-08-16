@@ -15,7 +15,7 @@ const Square = (props) => {
                      right: props.right
                  }
              }>
-            1
+            {props.number}
         </div>
     )
 };

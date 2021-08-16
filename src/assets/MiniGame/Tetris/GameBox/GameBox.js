@@ -10,8 +10,16 @@ const GameBox = props => {
         const [staticPieces, setStaticPieces] = useState([]);
         const [gameStatus, setGameStatus] = useState(true);
 
-        const noOfSquares = 60;
-        const noOfColumns = 5;
+        const noOfSquares = 140;
+        const noOfColumns = 10;
+        const templateColumns = () => {
+            let noColumns = '';
+            for (let i = 0; i < noOfColumns; i++) {
+                noColumns += 'auto ';
+            }
+
+            return noColumns;
+        }
 
         let squareRefs = [];
 
@@ -22,7 +30,7 @@ const GameBox = props => {
                 let ref = useRef(null);
 
                 squareRefs = [...squareRefs, ref]
-                squares = [...squares, <Square key={i} zIndex={0} squareRef={ref}/>];
+                squares = [...squares, <Square number={i} key={i} zIndex={0} squareRef={ref}/>];
             }
 
             return squares;
@@ -64,15 +72,19 @@ const GameBox = props => {
         }
 
         const movePiece = () => {
+            const staticPositions = staticPieces.map(piece => {
+                return parseInt(piece.key);
+            });
+            for (let i = 0; i < noOfColumns; i++) {
+                if (true === staticPositions.includes(i)) {
+                    setGameStatus(false);
+                }
+            }
             setTimeout(function () {
                 if (null !== activePiece) {
                     const nextPosition = activePiecePosition + noOfColumns;
 
-                    const staticPositions = staticPieces.map(piece => {
-                        return parseInt(piece.key);
-                    });
-
-                    if (true !== staticPositions.includes(activePiecePosition, staticPositions)) {
+                    if (true !== staticPositions.includes(activePiecePosition)) {
                         setActivePiece(createPiece(nextPosition, 'red'));
                         setActivePiecePosition(nextPosition);
                     } else {
@@ -81,18 +93,24 @@ const GameBox = props => {
                         setActivePiece(null);
                     }
                 }
-            }, 50);
+            }, 1);
         }
 
         useEffect(() => {
-            if (null === activePiecePosition) {
+            if (null === activePiecePosition && true === gameStatus) {
                 generateNewPiece();
             }
 
         }, [activePiecePosition])
 
         useEffect(() => {
-                if (activePiecePosition >= noOfSquares - noOfColumns) {
+            const staticKeys = staticPieces.map(piece => {
+                return piece.key;
+            });
+        }, [staticPieces])
+
+        useEffect(() => {
+                if (activePiecePosition >= noOfSquares - noOfColumns && true === gameStatus) {
                     const staticPositions = staticPieces.map(piece => {
                         return parseInt(piece.key);
                     });
@@ -103,8 +121,6 @@ const GameBox = props => {
                         setActivePiece(null);
                         setActivePiecePosition(null);
                         setStaticPieces([...staticPieces, createPiece(position, 'orange', position)]);
-
-                        console.log('here');
                     } else {
                         setStaticPieces([...staticPieces, createPiece(activePiecePosition, 'green', activePiecePosition)]);
                         setActivePiece(null);
@@ -116,9 +132,29 @@ const GameBox = props => {
             }, [activePiece]
         );
 
+        useEffect(() => {
+            if (false === gameStatus) {
+                console.log('Game Over!')
+                setActivePiece(null);
+                setActivePiecePosition(null);
+            }
+        }, [gameStatus])
+
+        useEffect(() => {
+                const staticPositions = staticPieces.map(piece => {
+                    return piece.key
+                });
+            },
+
+
+            [staticPieces]
+        );
+
         return (
             <div>
-                <div className={classes.game_box__container}>
+                <div className={classes.game_box__container} style={{
+                    gridTemplateColumns: templateColumns()
+                }}>
                     {staticPieces.map(piece => piece)}
                     {activePiece}
                     {mappedSquares}
